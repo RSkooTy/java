@@ -1,65 +1,51 @@
-import java.lang.reflect.Array;
+import java.util.ArrayList;
 
-public class laba6 {
-    private  int mSize;
-    private int[] stackArr;
+public class laba6 { 
+    private ArrayList<Integer> stackArr;
     private int last;
 
-    public laba6(int size){
-        mSize = size;
-        stackArr = new int[mSize];
-        last =-1;
+    public laba6() {
+        stackArr = new ArrayList<>();
+        last = -1;
     }
 
-    public void newElem(int element){
-        if(last < mSize - 1)
-        {
-            stackArr[++last] = element;
-            System.out.println("new element");
-        }else
-        {
-            System.out.println("stack is full");
-        }
+    public void newElem(int element) {
+        stackArr.add(element);
+        last++;
+        System.out.println("New element added: " + element);
     }
 
-    public boolean emptyStack(){
-        return (last == -1 );
+    public boolean emptyStack() {
+        return (last == -1);
     }
 
-    public boolean fullStack(){
-        return (last == mSize - 1);
-    }
-
-    public int deleteElem(){
-        if(last >= 0)
-        {
-            int deleteElemNew = stackArr[last--];
-            System.out.println("extracted element: " + deleteElemNew);
+    public int deleteElem() {
+        if (last >= 0) {
+            int deleteElemNew = stackArr.remove(last);
+            last--;
+            System.out.println("Extracted element: " + deleteElemNew);
             return deleteElemNew;
-        }else
-        {
-            System.out.println("stack is empty");
-            return  0;
+        } else {
+            System.out.println("Stack is empty");
+            return 0;
         }
     }
 
-    public int topElement(){
-        if(last >= 0)
-        {
-            int takeElement = stackArr[last];
-            System.out.println("top element in stack: " + takeElement);
+    public int topElement() {
+        if (last >= 0) {
+            int takeElement = stackArr.get(last);
+            System.out.println("Top element in stack: " + takeElement);
             return takeElement;
-        }else{
-            System.out.println("stack is empty");
+        } else {
+            System.out.println("Stack is empty");
             return 0;
         }
     }
 
     public static void main(String[] args) {
-        laba6 stack = new laba6(5);
+        laba6 stack = new laba6();
 
-        for(int i = 1; i <= 5; i++)
-        {
+        for (int i = 1; i <= 5; i++) {
             stack.newElem(i);
         }
 
@@ -69,8 +55,8 @@ public class laba6 {
             stack.deleteElem();
         }
 
-        stack.topElement();
+       if (!stack.emptyStack()) {
+            stack.topElement();
+        }
     }
-
-
 }
