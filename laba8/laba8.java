@@ -2,9 +2,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
 public class laba8 {
-    public static void classInfo(Object obj){
-        Class<?> class1 = obj.getClass();
-
+    public static void classInfo(Class<?> class1){
         System.out.println("Имя класса: " + class1.getName());
 
         System.out.println("Поля: ");
@@ -13,7 +11,6 @@ public class laba8 {
             System.out.println( field.getName() + " : " + field.getType().getName());
         }
         System.out.println();
-
 
         System.out.println("Методы: ");
         Method[] methods = class1.getDeclaredMethods();
@@ -42,6 +39,6 @@ public class laba8 {
     }
 
     public static void main(String[] arg){
-        classInfo(new Innerlaba8());
+        classInfo(Innerlaba8.class);
     }
 }
